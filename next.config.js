@@ -1,9 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  turbopack: {
-    // Explicitly set the root directory to avoid workspace detection issues
-    root: process.cwd(),
-  },
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'cdn.islamic.network' },
