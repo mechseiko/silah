@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1D9E75;
+  --primary-light: #E1F5EE;
+  --primary-dark: #0F6E56;
+  --gold: #C9A84C;
+  --ink: #1C1C1A;
+  --ink-muted: #5F5E5A;
+  --surface: #F5F2EB;
+  --surface-card: #FFFFFF;
+  --border: rgba(28, 28, 26, 0.1);
+  --alert: #E8694A;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--surface);
+    color: var(--ink);
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Arabic text always uses Amiri */
+  [lang="ar"], .arabic {
+    font-family: 'Amiri', serif;
+    direction: rtl;
+    line-height: 2;
+  }
+}
+
+@layer components {
+  /* ── Cards ─────────────────────────────────────────── */
+  .card {
+    @apply bg-white rounded-2xl border border-black/[0.06] p-5;
+  }
+
+  .card-sm {
+    @apply bg-white rounded-xl border border-black/[0.06] p-4;
+  }
+
+  /* ── Buttons ────────────────────────────────────────── */
+  .btn-primary {
+    @apply bg-primary-400 text-white font-medium rounded-xl px-5 py-3
+           hover:bg-primary-600 active:scale-[0.98] transition-all duration-150
+           disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-ink-600 font-medium rounded-xl px-5 py-3
+           border border-black/10 hover:bg-black/5 active:scale-[0.98]
+           transition-all duration-150;
+  }
+
+  .btn-check-in {
+    @apply w-full bg-primary-400 text-white font-medium text-lg rounded-2xl
+           py-4 hover:bg-primary-600 active:scale-[0.99] transition-all
+           duration-200 shadow-sm shadow-primary-400/20;
+  }
+
+  /* ── Inputs ─────────────────────────────────────────── */
+  .input {
+    @apply w-full bg-ink-50 rounded-xl px-4 py-3 text-ink-600 outline-none
+           border border-transparent focus:border-primary-400 focus:bg-white
+           transition-all duration-150 placeholder:text-ink-400;
+  }
+
+  .textarea {
+    @apply input resize-none min-h-[100px];
+  }
+
+  /* ── Verse card ──────────────────────────────────────── */
+  .verse-card {
+    @apply bg-primary-50 rounded-2xl p-6 border border-primary-100;
+  }
+
+  /* ── Streak dot ──────────────────────────────────────── */
+  .streak-dot {
+    @apply w-3 h-3 rounded-full;
+  }
+
+  /* ── Avatar ──────────────────────────────────────────── */
+  .avatar {
+    @apply rounded-full flex items-center justify-center font-medium
+           text-sm flex-shrink-0 select-none;
+  }
+
+  /* ── Pill / badge ────────────────────────────────────── */
+  .pill {
+    @apply inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1
+           rounded-full;
+  }
+
+  .pill-green {
+    @apply pill bg-primary-50 text-primary-600;
+  }
+
+  .pill-gold {
+    @apply pill bg-amber-50 text-amber-700;
+  }
+}
+
+/* ── Scrollbars ──────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* ── Focus visible ───────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ── Page transitions ────────────────────────────────────── */
+.page-enter {
+  animation: slideUp 0.35s ease-out;
+}
